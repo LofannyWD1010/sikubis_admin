@@ -14,10 +14,10 @@ class Civitas_Akademika extends Model
         'created_at',
         'updated_at',
     ];
-
+ 
     protected $fillable = [
         'id',
-        'nama'  
+        'nama' 
     ];
     protected $guarded = [];
 
