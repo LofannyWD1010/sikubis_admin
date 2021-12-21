@@ -67,7 +67,11 @@ $saldo_keluar_total = 0;
                             &nbsp;
                         </th>
                         <th>
-                            Saldo Cair
+                            Pengeluaran
+                            &nbsp;
+                        </th>
+                        <th>
+                            Saldo Total
                             &nbsp;
                         </th>
                     </tr>
@@ -103,6 +107,9 @@ $saldo_keluar_total = 0;
                       </tbody>
                     </table>
                     </td>
+                    <td>
+                    {{App\Pengguna::showRupiah($saldo_keluar_total) }}
+                    </td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -111,7 +118,7 @@ $saldo_keluar_total = 0;
               <tbody>
               <tr>
                       <td colspan="3">
-                        <label>Saldo keluar Total : {{App\Pengguna::showRupiah($saldo_keluar_total) }}</label>
+                        <label>Pengeluaran Total : {{App\Pengguna::showRupiah($saldo_keluar_total) }}</label>
                       </td>
                     </tr>
               </tbody>

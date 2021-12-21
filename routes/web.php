@@ -108,4 +108,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     
     Route::resource('civitasakademikas', 'CivitasAkademikaController');
 
+    Route::delete('laporanjurnals/destroy', 'LaporanJurnalController@massDestroy')->name('laporanjurnals.massDestroy');
+    
+    Route::resource('laporanjurnals', 'LaporanJurnalController');
+    
+    Route::get('laporanjurnals/show_range', 'LaporanJurnalController@show_range')->name('laporanjurnals.show_range');
+    
+    Route::get('laporanjurnals/show_weekly', 'LaporanJurnalController@show_weekly')->name('laporanjurnals.show_weekly');
+
 });

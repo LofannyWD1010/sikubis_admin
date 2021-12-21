@@ -2,7 +2,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        Saldo Kas Penjual
+        Saldo Penjual
     </div>
     <div class="card-header" style="color: green;">
         <strong>{{App\Pengguna::showRupiah($total ?? '') }}</strong>

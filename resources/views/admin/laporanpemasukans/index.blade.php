@@ -67,7 +67,11 @@ $saldo_masuk_total = 0;
                             &nbsp;
                         </th>
                         <th>
-                            Saldo Masuk
+                            Pemasukan
+                            &nbsp;
+                        </th>
+                        <th>
+                            Saldo Total
                             &nbsp;
                         </th>
                     </tr>
@@ -103,6 +107,9 @@ $saldo_masuk_total = 0;
                       </tbody>
                     </table>
                     </td>
+                    <td>
+                    {{App\Pengguna::showRupiah($saldo_masuk_total) }}
+                    </td>  
                     </tr>
                     @endforeach
                 </tbody>
@@ -111,7 +118,7 @@ $saldo_masuk_total = 0;
               <tbody>
               <tr>
                       <td colspan="2">
-                        <label>Saldo Masuk Total : {{App\Pengguna::showRupiah($saldo_masuk_total) }} </label>
+                        <label>Pemasukan Total : {{App\Pengguna::showRupiah($saldo_masuk_total) }} </label>
                       </td>
                     </tr>
               </tbody>

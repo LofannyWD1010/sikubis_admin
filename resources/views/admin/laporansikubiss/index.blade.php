@@ -5,11 +5,12 @@ $sum_saldo_masuk = 0;
 $sum_saldo_keluar = 0;
 $saldo_masuk_total = 0;
 $saldo_keluar_total = 0;
+$saldo_gabungan = 0;
 ?>
 
 <div class="card">
     <div class="card-header">
-        Laporan Laba Rugi
+        Laporan Transaksi
     </div>
     <div class="card-header">
       <div class="box-body no-padding">
@@ -73,7 +74,11 @@ $saldo_keluar_total = 0;
                             &nbsp;
                         </th>
                         <th>
-                            Saldo Cair
+                            Saldo Keluar
+                            &nbsp;
+                        </th>
+                        <th>
+                            Saldo
                             &nbsp;
                         </th>
                     </tr>
@@ -101,7 +106,6 @@ $saldo_keluar_total = 0;
                         <?php $sum_saldo_masuk = $sum_saldo_masuk + $saldo_masuk->saldo?>
                         @endforeach
                         <tr>
-                          <td class="bg-success" colspan="2">Saldo Total : {{App\Pengguna::showRupiah($sum_saldo_masuk) }} </td>
                           <?php $saldo_masuk_total = $saldo_masuk_total + $sum_saldo_masuk ?>
                           <?php $sum_saldo_masuk = 0?>
                         </tr>
@@ -119,29 +123,21 @@ $saldo_keluar_total = 0;
                         <?php $sum_saldo_keluar = $sum_saldo_keluar + $saldo_cair->saldo?>
                         @endforeach 
                         <tr>
-                          <td class="bg-success" colspan="2">Saldo Total : {{App\Pengguna::showRupiah($sum_saldo_keluar) }} </td>
                           <?php $saldo_keluar_total = $saldo_keluar_total + $sum_saldo_keluar ?>
                           <?php $sum_saldo_keluar = 0?>
                         </tr>                   
                       </tbody>
                     </table>
                       </td>
+                    <td>
+                    {{App\Pengguna::showRupiah ($saldo_gabungan = $saldo_masuk_total - $saldo_keluar_total) }}
+                    </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
             <table class=" table table-bordered table-striped table-hover datatable">
               <tbody>
-              <tr>
-                      <td colspan="2">
-                        <label>Saldo Masuk Total : {{App\Pengguna::showRupiah($saldo_masuk_total) }} </label>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colspan="3">
-                        <label>Saldo keluar Total : {{App\Pengguna::showRupiah($saldo_keluar_total) }}</label>
-                      </td>
-                    </tr>
                     <tr>
                       <td colspan="4">
                         <label>Saldo Total : {{App\Pengguna::showRupiah(($saldo_masuk_total-$saldo_keluar_total)) }}</label>

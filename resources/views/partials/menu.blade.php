@@ -112,7 +112,7 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item has-treeview {{ request()->is('admin/keuntungans*') ? 'menu-open' : '' }} {{ request()->is('admin/transaksis*') ? 'menu-open' : '' }} {{ request()->is('admin/saldomasuks*') ? 'menu-open' : '' }} {{ request()->is('admin/saldocairs*') ? 'menu-open' : '' }}">
+                    <li class="nav-item has-treeview {{ request()->is('admin/keuntungans*') ? 'menu-open' : '' }} {{ request()->is('admin/transaksis*') ? 'menu-open' : '' }} {{ request()->is('admin/saldomasuks*') ? 'menu-open' : '' }} {{ request()->is('admin/saldocairs*') ? 'menu-open' : '' }} {{ request()->is('admin/laporanjurnals*') ? 'menu-open' : '' }}">
                         <a class="nav-link nav-dropdown-toggle">
                             <i class="fas fa-briefcase">
 
@@ -139,7 +139,7 @@
 
                                         </i>
                                         <p>
-                                            <span>Saldo Kas</span>
+                                            <span>Saldo Penjual</span>
                                         </p>
                                     </a>
                             </li>
@@ -163,51 +163,18 @@
                                         </p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.laporanjurnals.index") }}" class="nav-link {{ request()->is('admin/laporanjurnals') || request()->is('admin/laporanjurnals/*') ? 'active' : '' }}">
+                                        <i class="fas fa-cart-arrow-down">
+
+                                        </i>
+                                        <p>
+                                            <span>Laporan Transaksi</span>
+                                        </p>
+                                    </a>
+                                </li>
                         </ul>
                     </li>
-                    <li class="nav-item has-treeview {{ request()->is('admin/laporansikubiss*') ? 'menu-open' : '' }} {{ request()->is('admin/laporanpemasukans*') ? 'menu-open' : '' }} {{ request()->is('admin/laporanpengeluarans*') ? 'menu-open' : '' }}">
-                        <a class="nav-link nav-dropdown-toggle">
-                            <i class="fas fa-file-alt">
-
-                            </i>
-                            <p>
-                                <span>Laporan</span>
-                                <i class="right fa fa-angle-left"></i>
-                            </p>
-                        </a>
-                    <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ route("admin.laporansikubiss.index") }}" class="nav-link {{ request()->is('admin/laporansikubiss') || request()->is('admin/laporansikubiss/*') ? 'active' : '' }}">
-                                <i class="fas fa-file-invoice-dollar">
-
-                                </i>
-                                <p>
-                                    <span>Laba Rugi</span>
-                                </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route("admin.laporanpemasukans.index") }}" class="nav-link {{ request()->is('admin/laporanpemasukans') || request()->is('admin/laporanpemasukans/*') ? 'active' : '' }}">
-                                <i class="fas fa-file-invoice-dollar">
-
-                                </i>
-                                <p>
-                                    <span>Pemasukan</span>
-                                </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route("admin.laporanpengeluarans.index") }}" class="nav-link {{ request()->is('admin/laporanpengeluarans') || request()->is('admin/laporanpengeluarans/*') ? 'active' : '' }}">
-                                <i class="fas fa-file-invoice-dollar">
-
-                                </i>
-                                <p>
-                                    <span>Pengeluaran</span>
-                                </p>
-                                </a>
-                            </li>
-                    </ul>
-                </li>
                 <li class="nav-item">
                     <a href="{{ route("admin.requests.index") }}" class="nav-link {{ request()->is('admin/requests') || request()->is('admin/requests/*') ? 'active' : '' }}">
                         <i class="fas fa-cart-arrow-down">

@@ -24,7 +24,7 @@ class RequestController extends Controller
 
     public function update_request_penjual($id_pengguna)
     {
-        abort_unless(\Gate::allows('product_edit'), 403);
+        //abort_unless(\Gate::allows('product_edit'), 403);
 
         Request_Penjual::where('id_pengguna',$id_pengguna)->update([
             'status' => 'sudah',
