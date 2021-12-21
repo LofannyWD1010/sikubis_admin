@@ -33,7 +33,7 @@
                         Fakultas
                     </th>
                     <td>
-                        {{$request_mitra->Fakultas->nama}}
+                        {{$request_mitra->fakultas}}
                     </td>
                 </tr>
                 <tr>
@@ -41,7 +41,7 @@
                         Jurusan
                     </th>
                     <td>
-                        {{$request_mitra->Jurusan->nama}}
+                        {{$request_mitra->jurusan}}
                     </td>
                 </tr>
                 <tr>
@@ -49,7 +49,7 @@
                         Civitas Akademika
                     </th>
                     <td>
-                        {{$request_mitra->Civitas_Akademika->nama}}
+                        {{$request_mitra->civitas}}
                     </td>
                 </tr>
                 <tr>
