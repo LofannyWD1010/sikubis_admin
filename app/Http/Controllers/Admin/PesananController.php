@@ -25,7 +25,6 @@ class PesananController extends Controller
     }
     public function update_detail_pesanan($id_pesanan)
     {
-        abort_unless(\Gate::allows('product_edit'), 403);
 
         Detail_Pesanan::where('id_pesanan',$id_pesanan)->update([
             'status' => 'diproses',
