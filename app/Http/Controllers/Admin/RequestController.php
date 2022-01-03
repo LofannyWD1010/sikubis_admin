@@ -38,4 +38,9 @@ class RequestController extends Controller
         // return $detail_pesanan;
         return redirect()->route('admin.requests.index',$id_pengguna);
     }
+    public function destroy(Request $request, $id)
+    {
+        Request_Penjual::where('id',$id)->delete();
+        return back();
+    }
 }

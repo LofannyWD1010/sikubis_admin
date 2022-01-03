@@ -6,6 +6,9 @@
         <div class="row">
             <div class="col-md-6">Detail Request Penjual</div>
             <div class="col-md-6 text-right">
+                <a class="btn btn-sm btn-info" href="{{ route('admin.requests.index')}}">
+                Kembali
+                </a>
                 <form action="{{ route('admin.requests.update_request_penjual', $id_pengguna) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                     <input type="hidden" name="_method" value="PATCH">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -33,7 +36,7 @@
                         Fakultas
                     </th>
                     <td>
-                        {{$request_mitra->fakultas}}
+                        {{$request_mitra->Fakultas->nama}}
                     </td>
                 </tr>
                 <tr>
@@ -41,7 +44,7 @@
                         Jurusan
                     </th>
                     <td>
-                        {{$request_mitra->jurusan}}
+                        {{$request_mitra->Jurusan->nama}}
                     </td>
                 </tr>
                 <tr>
@@ -49,7 +52,7 @@
                         Civitas Akademika
                     </th>
                     <td>
-                        {{$request_mitra->civitas}}
+                        {{$request_mitra->Civitas_Akademika->nama}}
                     </td>
                 </tr>
                 <tr>
@@ -73,7 +76,7 @@
                         Bukti
                     </th>
                     <td>
-                        <img width="100" height="100" src="{{ asset("gambar/".$request_mitra->foto) }}"/>
+                        <img width="100" height="100" src="{{ asset("http://inkubator.sigerdev.com/uploads/file/".$request_mitra->foto) }}"/>
 
                     </td>
                 </tr>

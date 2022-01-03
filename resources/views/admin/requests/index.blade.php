@@ -48,8 +48,13 @@
                     </td>
                     <td>
                         <a class="btn btn-xs btn-primary" href="{{ route('admin.requests.show', $request_mitra->id_pengguna) }}">
-                        Detail
+                        Detail                    
                         </a>
+                        <form action="{{ route('admin.requests.destroy', $request_mitra->id) }}" method="POST" onsubmit="return confirm('Anda yakin?');" style="display: inline-block;">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="submit" class="btn btn-xs btn-danger" value="Hapus">
+                                    </form>
                     </td>
                     @endforeach
                 </tbody>

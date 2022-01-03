@@ -52,7 +52,7 @@
                         {{ $pesanan->id_pesanan ?? '' }}
                     </td>
                     <td>
-                        <img width="100" height="100" src="{{ asset("gambar/".$pesanan->foto) }}"/>
+                        <img width="100" height="100" src="{{ asset("http://inkubator.sigerdev.com/uploads/file/".$pesanan->foto) }}"/>
                     </td>
                     <td>
                         <span class="badge badge-success">{{ $pesanan->status ?? '' }}</span>
