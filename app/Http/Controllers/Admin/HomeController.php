@@ -23,13 +23,16 @@ class HomeController
 		$month = Carbon::now()->format('m');
 
         $jumlah_mahasiswa = Request_Penjual::all()
-        ->where('civitas_akademika','Mahasiswa')
+        ->where('id_civitas_akademika','2')
+		->where('status','sudah')
         ->count();
         $jumlah_dosen = Request_Penjual::all()
-        ->where('civitas_akademika','Dosen')
+        ->where('id_civitas_akademika','1')
+		->where('status','sudah')
         ->count();
         $jumlah_tenagaPendidikan = Request_Penjual::all()
-        ->where('civitas_akademika','Tenaga Pendidikan')
+        ->where('id_civitas_akademika','3')
+		->where('status','sudah')
         ->count();
 		$jumlah_requestBelum = Request_Penjual::all()
         ->where('status','belum')
