@@ -60,9 +60,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     
     Route::resource('saldomasuks', 'SaldoMasukController');
 
+    Route::post('saldomasuks/show_range', 'SaldoMasukController@show_range')->name('saldomasuks.show_range');
+
     Route::delete('saldocairs/destroy', 'SaldoCairController@massDestroy')->name('saldocairs.massDestroy');
     
     Route::resource('saldocairs', 'SaldoCairController');
+
+    Route::post('saldocairs/show_range', 'SaldoCairController@show_range')->name('saldocairs.show_range');
 
     Route::delete('keuntungans/destroy', 'KeuntunganController@massDestroy')->name('keuntungans.massDestroy');
     
@@ -112,7 +116,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     
     Route::resource('laporanjurnals', 'LaporanJurnalController');
     
-    Route::get('laporanjurnals/show_range', 'LaporanJurnalController@show_range')->name('laporanjurnals.show_range');
+    Route::post('laporanjurnals/show_range', 'LaporanJurnalController@show_range')->name('laporanjurnals.show_range');
     
     Route::get('laporanjurnals/show_weekly', 'LaporanJurnalController@show_weekly')->name('laporanjurnals.show_weekly');
 

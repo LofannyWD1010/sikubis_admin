@@ -4,6 +4,30 @@
     <div class="card-header">
         Saldo Masuk
     </div>
+    <div>
+        <form action="{{ route('admin.saldocairs.show_range') }}" method="POST">
+        @csrf
+            <div class="col-md-3">
+              <div class="form-group">
+              <label for="">Start Date</label>
+              <input type="date" class="form-control" name="tanggalawal" value="{{$tanggalawal ?? ''}}">
+            </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="form-group">
+              <label for="">End Date</label>
+              <input type="date" class="form-control" name="tanggalakhir" value="{{$tanggalakhir ?? ''}}">
+            </div>
+            </div>
+
+            <div class="col-md-2" style="margin-top: 24px;">
+               <div class="form-group">
+                 <input type="submit" class="btn btn-primary" value="Submit">
+                </div>
+            </div>
+        </form>
+    </div>
     <div class="card-header" style="color: green;">
         <strong>{{App\Pengguna::showRupiah($total ?? '') }}</strong>
     </div>

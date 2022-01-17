@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Produk;
+use App\Request_Penjual;
 
 class Detail_Pesanan extends Model
 {
@@ -40,6 +41,10 @@ class Detail_Pesanan extends Model
 
     public function Produk(){
         return $this->belongsTo(Produk::class,'id_produk','id');
+    }
+
+    public function Request_Penjual(){
+        return $this->belongsTo(Request_Penjual::class,'id_penjual','id')->where('id_fakultas','7');
     }
 
 }

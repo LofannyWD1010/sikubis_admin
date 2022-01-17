@@ -44,12 +44,68 @@ class HomeController
 
 
         $jumlah_penjualan_terbanyak = Detail_Pesanan::select('id_penjual')
-        ->where('status','diterima')
-        ->groupBy('id_penjual')
-        ->orderByRaw('COUNT(*) DESC')
-        ->limit(1)
-        ->get();
-        
+		->where('status','diterima')
+		->groupBy('id_penjual')
+		->orderByRaw('COUNT(*) DESC')
+		->limit(1)
+		->get();
+        // ->groupBy('detail_pesanan.id_penjual')
+        // ->orderByRaw('COUNT(*) DESC')
+        // ->limit(1)
+        // $jumlah_penjualan_terbanyak = Detail_Pesanan::join('request_mitra', 'detail_pesanan.id_penjual', '=', 'request_mitra.id_pengguna')
+		// ->select('detail_pesanan.id_penjual','detail_pesanan.status','request_mitra.id_pengguna','request_mitra.id_fakultas')
+        // ->where('request_mitra.id_fakultas',7)
+        // ->groupBy('detail_pesanan.id_penjual')
+        // ->orderByRaw('COUNT(*) DESC')
+        // ->limit(1)
+        // ->get();
+		
+		
+		// $tabel_gabung_fisip = Detail_Pesanan::join('request_mitra', 'detail_pesanan.id_penjual', '=', 'request_mitra.id_pengguna')
+        // ->select('detail_pesanan.*', 'request_mitra.id_pengguna', 'request_mitra.id_fakultas')
+        // ->where('detail_pesanan.id_penjual',$jumlah_penjualan_terbanyak[0]['id_penjual'])
+        // ->where('detail_pesanan.status','diterima')
+        // ->where('request_mitra.id_fakultas',6)
+		// ->get();
+
+		// $tabel_gabung_fisip = Detail_Pesanan::join('request_mitra', 'detail_pesanan.id_penjual', '=', 'request_mitra.id_pengguna')
+        // ->select('detail_pesanan.*', 'request_mitra.id_pengguna', 'request_mitra.id_fakultas')
+        // ->where('detail_pesanan.id_penjual',$jumlah_penjualan_terbanyak[0]['id_penjual'])
+        // ->where('detail_pesanan.status','diterima')
+        // ->where('request_mitra.id_fakultas',6)
+		// ->get();
+
+		
+
+		// $tabel_gabung_fmipa = Detail_Pesanan::join('request_mitra', 'detail_pesanan.id_penjual', '=', 'request_mitra.id_pengguna')
+        // ->select('detail_pesanan.*', 'request_mitra.id_pengguna', 'request_mitra.id_fakultas')
+        // ->where('detail_pesanan.id_penjual',$jumlah_penjualan_terbanyak[0]['id_penjual'])
+        // ->where('detail_pesanan.status','diterima')
+        // ->where('request_mitra.id_fakultas',7)
+		// ->get();
+
+		// return $tabel_gabung_fmipa;
+		// $tabel_gabung = DB::table('detail_pesanan')
+        // ->join('request_mitra', 'detail_pesanan.id_penjual', '=', 'request_mitra.id_pengguna')
+        // ->select('detail_pesanan.*', 'request_mitra.id_pengguna', 'request_mitra.id_fakultas')
+        // ->get();
+
+		
+
+		
+
+		// $tabel_gabung = $tabel_gabung->select('id_penjual')
+        // ->where('status','diterima')
+		// ->where('id_fakultas','7')
+        // ->groupBy('id_penjual')
+        // ->orderByRaw('COUNT(*) DESC')
+        // ->limit(1)
+		// ->get();
+		
+		
+		
+		
+
         //Total Pemasukan
 
         $jan1[] = 0;

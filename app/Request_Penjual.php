@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Pengguna;
+use App\Detail_Pesanan;
 
 class Request_Penjual extends Model
 {
@@ -37,5 +38,9 @@ class Request_Penjual extends Model
 
     public function Civitas_Akademika(){
         return $this->belongsTo(Civitas_Akademika::class,'id_civitas_akademika','id');
+    }
+
+    public function Detail_Pesanan(){
+        return $this->belongsTo(Detail_Pesanan::class,'id_pengguna'.'id');
     }
 }

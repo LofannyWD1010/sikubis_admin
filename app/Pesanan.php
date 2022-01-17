@@ -31,5 +31,8 @@ class Pesanan extends Model
     public function Detail_Pesanan(){
         return $this->belongsToMany(Detail_Pesanan::class,'id_detail');
     }
+    public function Produk(){
+        return $this->belongsTo(Produk::class,'id');
+    }
 
 }

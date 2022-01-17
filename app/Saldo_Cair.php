@@ -29,7 +29,7 @@ class Saldo_Cair extends Model
     }
 
     public static function getSaldoCair($tanggal){
-        $saldo_cair = Saldo_Cair::where('tanggal_cair',$tanggal)->get();
+        $saldo_cair = Saldo_Cair::where('created_at',$tanggal)->get();
         // $saldo_cair = Saldo_cair::all();
         return $saldo_cair;
     }

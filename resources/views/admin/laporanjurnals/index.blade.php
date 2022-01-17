@@ -9,19 +9,19 @@ $sum_saldo = 0;
         Laporan Transaksi
     </div>
     <div>
-        <form action="{{ route('admin.laporanjurnals.show_range') }}" method="get">
-            
+        <form action="{{ route('admin.laporanjurnals.show_range') }}" method="POST">
+        @csrf
             <div class="col-md-3">
               <div class="form-group">
               <label for="">Start Date</label>
-              <input type="date" class="form-control" name="start_date" value="{{$start_date ?? ''}}">
+              <input type="date" class="form-control" name="tanggalawal" value="{{$tanggalawal ?? ''}}">
             </div>
             </div>
 
             <div class="col-md-3">
               <div class="form-group">
               <label for="">End Date</label>
-              <input type="date" class="form-control" name="end_date" value="{{$end_date ?? ''}}">
+              <input type="date" class="form-control" name="tanggalakhir" value="{{$tanggalakhir ?? ''}}">
             </div>
             </div>
 

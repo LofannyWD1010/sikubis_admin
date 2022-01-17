@@ -109,9 +109,10 @@
         <canvas id="canvas" width="600" height="200"></canvas>
 
         </div>
-        </div>
-        </div>
-        </div>
+      </div>
+      
+    </div>
+  </div>
         <!-- BAR CHART -->
 
     <script src="https://raw.githubusercontent.com/nnnick/Chart.js/master/dist/Chart.bundle.js"></script>

@@ -28,7 +28,7 @@ class Saldo_Masuk extends Model
         return $this->belongsTo(Pengguna::class,'id_pengguna','id');
     }
     public static function getSaldoMasuk($tanggal){
-        $saldo_masuk = Saldo_Masuk::where('tanggal_masuk',$tanggal)->get();
+        $saldo_masuk = Saldo_Masuk::where('created_at',$tanggal)->get();
         // $saldo_masuk = Saldo_Masuk::all();
         return $saldo_masuk;
     }

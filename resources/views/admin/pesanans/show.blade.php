@@ -59,10 +59,10 @@
                 </tr>
                 <tr>
                     <th>
-                        ID Produk
+                        Nama Produk
                     </th>
                     <td>
-                        {{$detail_pesanan->id_produk}}
+                        {{$detail_pesanan->Produk->nama}}
                     </td>
                 </tr>
                 <tr>
