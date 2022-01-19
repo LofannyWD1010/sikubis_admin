@@ -9,7 +9,7 @@ $saldo_masuk_total = 0;
         Saldo Masuk
     </div>
     <div>
-        <form action="{{ route('admin.saldocairs.show_range') }}" method="POST">
+        <form action="{{ route('admin.saldomasuks.show_range') }}" method="POST">
         @csrf
             <div class="col-md-3">
               <div class="form-group">
