@@ -27,6 +27,6 @@ class SaldoMasukController extends Controller
         $tanggalakhir = Carbon::parse($request->tanggalakhir)->format('Y-m-d');
             
         $saldo_masuk = $saldo_masuk->whereBetween('created_at',[$tanggalawal, $tanggalakhir]);
-        return view('admin.saldocairs.index', compact('saldo_masuk','total','tanggalawal','tanggalakhir'));
+        return view('admin.saldomasuks.index', compact('saldo_masuk','total','tanggalawal','tanggalakhir'));
     }
 }
