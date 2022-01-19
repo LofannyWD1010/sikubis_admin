@@ -1,15 +1,15 @@
 @extends('layouts.admin')
 @section('content')
 <?php 
-$sum_saldo_masuk = 0;
-$saldo_masuk_total = 0;
+$sum_saldo = 0;
+$saldo_pendapatan_total = 0;
 ?>
 <div class="card">
     <div class="card-header">
-        Saldo Masuk
+        Penjualan {{$fakultas->nama}}
     </div>
     <div>
-        <form action="{{ route('admin.saldocairs.show_range') }}" method="POST">
+        <form action="{{ route("admin.penjualanterbanyaks.show_range", [$fakultas->id]) }}" method="POST">
         @csrf
             <div class="col-md-3">
               <div class="form-group">
@@ -33,7 +33,7 @@ $saldo_masuk_total = 0;
         </form>
     </div>
     <div class="card-header" style="color: green;">
-        <strong>{{App\Pengguna::showRupiah($total ?? '') }}</strong>
+        <strong> </strong>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -48,30 +48,30 @@ $saldo_masuk_total = 0;
                             &nbsp;
                         </th>
                         <th>
-                            Nama
+                            Nama Penjual
                             &nbsp;
                         </th>
                         <th>
-                            Jenis
+                            Fakultas
                             &nbsp;
                         </th>
                         <th>
-                            Keterangan
+                            Pendapatan
                             &nbsp;
                         </th>
                         <th>
-                            Pemasukan
+                            Tanggal
                             &nbsp;
                         </th>
                         <th>
-                            Waktu
+                            Aksi
                             &nbsp;
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                @foreach ($saldo_masuk as $saldo_masuk)
-                        <tr data-entry-id="{{ $saldo_masuk->id }}">
+                @foreach($mitra as $mitra)
+                    <tr data-entry-id="{{ $mitra->id_detail }}">
                     <td>
                     
                     </td>
@@ -79,23 +79,25 @@ $saldo_masuk_total = 0;
                         {{$loop->iteration}}
                     </td>
                     <td>
-                        {{ $saldo_masuk->Pengguna->nama ?? '' }}
+                        {{$mitra->Pengguna->nama}}
                     </td>
                     <td>
-                        Saldo Masuk
+                        {{$mitra->Fakultas->nama}}
                     </td>
                     <td>
-                        Pemasukan
+                        {{$mitra->total_keuntungan}}
                     </td>
                     <td>
-                    {{App\Pengguna::showRupiah($saldo_masuk->total_keuntungan ?? '') }}
+                        {{$mitra->created_at}}
                     </td>
                     <td>
-                        {{ $saldo_masuk->created_at ?? '' }}
+                        <a class="btn btn-sm btn-primary" href="{{ route('admin.penjualanterbanyaks.detail',$fakultas->id) }}">Detail
+                        </a>
                     </td>
-                    <?php $sum_saldo_masuk = $sum_saldo_masuk + $saldo_masuk->total_keuntungan?>
-                    <?php $saldo_masuk_total = $saldo_masuk_total + $sum_saldo_masuk ?>
-                    <?php $sum_saldo_masuk = 0?>
+                    </tr>
+                    <?php $sum_saldo = $sum_saldo + $mitra->total_keuntungan?>
+                    <?php $saldo_pendapatan_total = $saldo_pendapatan_total + $sum_saldo ?>
+                    <?php $sum_saldo = 0?>
                     @endforeach
                 </tbody>
             </table>
@@ -103,10 +105,11 @@ $saldo_masuk_total = 0;
               <tbody>
               <tr>
                       <td colspan="3">
-                        <label>Total Saat ini {{App\Pengguna::showRupiah($saldo_masuk_total) }}</label>
+                        <label>Total Pendapatan {{App\Pengguna::showRupiah($saldo_pendapatan_total) }}</label>
                       </td>
                     </tr>
               </tbody>
+            </table>
         </div>
     </div>
 </div>

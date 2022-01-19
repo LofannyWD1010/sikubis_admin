@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Pengguna;
 use App\Detail_Pesanan;
+use App\Produk;
 
 class Request_Penjual extends Model
 {
@@ -42,5 +43,9 @@ class Request_Penjual extends Model
 
     public function Detail_Pesanan(){
         return $this->belongsTo(Detail_Pesanan::class,'id_pengguna'.'id');
+    }
+
+    public function Produk(){
+        return $this->belongsTo(Produk::class,'id_pengguna'.'id');
     }
 }

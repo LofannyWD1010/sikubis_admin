@@ -16,12 +16,12 @@
               <div class="inner">
                 <h4>{{$jumlah_mahasiswa}}</h4>
 
-                <h5>Akun Penjual Mahasiswa</h5>
+                <p>Akun Penjual Mahasiswa</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-            
+              <a href="{{ route('admin.akuns.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -32,12 +32,12 @@
               <div class="inner">
                 <h4>{{$jumlah_dosen}}</h4>
 
-                <h5>Akun Penjual Dosen</h5>
+                <p>Akun Penjual Dosen</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-             
+              <a href="{{ route('admin.akuns.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
         <!-- ./col -->
@@ -48,56 +48,58 @@
               <div class="inner">
                 <h4>{{$jumlah_tenagaPendidikan}}</h4>
 
-                <h5>Akun Penjual Tenaga Pendidikan</h5>
+                <p>Akun Penjual Tenaga Pendidikan</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
+              <a href="{{ route('admin.akuns.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+
           <div class="col-lg-4 col-6">
             <!-- small box -->
-            <div class="small-box bg-warning">
+            <div class="small-box bg-info">
               <div class="inner">
                 <h4>{{$jumlah_penjualan_terbanyak[0]->Pengguna->nama}}</h4>
 
-                <h5>Jumlah Penjualan Terbanyak</h5>
-
+                <p>Jumlah Penjualan Terbanyak</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              
+              <a href="{{ route('admin.penjualanterbanyaks.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+
           <div class="col-lg-4 col-6">
             <!-- small box -->
-            <div class="small-box bg-warning">
+            <div class="small-box bg-info">
               <div class="inner">
                 <h4>{{$jumlah_requestBelum}}</h4>
 
-                <h5>Jumlah Request Penjual</h5>
+                <p>Jumlah Request Penjual</p>
 
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              
+              <a href="{{ route('admin.requests.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <div class="col-lg-4 col-6">
             <!-- small box -->
-            <div class="small-box bg-warning">
+            <div class="small-box bg-info">
               <div class="inner">
                 <h4>{{$jumlah_requestPencairan}}</h4>
 
-                <h5>Jumlah Request Pencairan Dana</h5>
+                <p>Jumlah Request Pencairan Dana</p>
 
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              
+              <a href="{{ route('admin.pencairans.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
         </div>

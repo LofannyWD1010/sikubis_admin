@@ -44,7 +44,7 @@ class Detail_Pesanan extends Model
     }
 
     public function Request_Penjual(){
-        return $this->belongsTo(Request_Penjual::class,'id_penjual','id')->where('id_fakultas','7');
+        return $this->belongsTo(Request_Penjual::class,'id_penjual','id');
     }
 
 }

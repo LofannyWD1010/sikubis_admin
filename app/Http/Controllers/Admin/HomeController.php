@@ -16,6 +16,7 @@ use Carbon\CarbonPeriod;
 
 class HomeController
 {
+	
     public function index()
     {
 
@@ -49,6 +50,17 @@ class HomeController
 		->orderByRaw('COUNT(*) DESC')
 		->limit(1)
 		->get();
+
+		$jumlah_penjualan_terbanyak_test = Detail_Pesanan::join('request_mitra', 'detail_pesanan.id_penjual', '=', 'request_mitra.id_pengguna')
+		->select('detail_pesanan.id_penjual','detail_pesanan.status','request_mitra.id_pengguna','request_mitra.id_fakultas')
+        // ->where('detail_pesanan.status','diterima')
+		// ->where('request_mitra.id_fakultas',7)
+        // ->groupBy('detail_pesanan.id_penjual')
+        // ->orderByRaw('COUNT(*) DESC')
+        // ->limit(1)
+        ->get();
+
+		// return $jumlah_penjualan_terbanyak_test;
         // ->groupBy('detail_pesanan.id_penjual')
         // ->orderByRaw('COUNT(*) DESC')
         // ->limit(1)

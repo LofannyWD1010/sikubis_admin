@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 Route::redirect('/', '/login');
 
 Route::redirect('/home', '/admin');
@@ -119,5 +122,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('laporanjurnals/show_range', 'LaporanJurnalController@show_range')->name('laporanjurnals.show_range');
     
     Route::get('laporanjurnals/show_weekly', 'LaporanJurnalController@show_weekly')->name('laporanjurnals.show_weekly');
+    
+    Route::delete('penjualanterbanyaks/destroy', 'PenjualTerbanyakController@massDestroy')->name('penjualanterbanyaks.massDestroy');
+    
+    Route::resource('penjualanterbanyaks', 'PenjualanTerbanyakController');
+    
+    Route::get('penjualanterbanyaks/detail/{id}', 'PenjualanTerbanyakController@detail')->name('penjualanterbanyaks.detail');
 
+    Route::post('penjualanterbanyaks/detail/{id}/show_range', 'PenjualanTerbanyakController@show_range')->name('penjualanterbanyaks.show_range');
 });

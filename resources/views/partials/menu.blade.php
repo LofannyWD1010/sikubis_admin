@@ -72,7 +72,18 @@
                         </ul>
                     </li>
                 @endcan
-                <li class="nav-item">
+                <li class="nav-item has-treeview {{ request()->is('admin/akuns*') ? 'menu-open' : '' }} {{ request()->is('admin/penjualanterbanyaks*') ? 'menu-open' : '' }}">
+                        <a class="nav-link nav-dropdown-toggle">
+                            <i class="fas fa-briefcase">
+
+                            </i>
+                            <p>
+                                <span>Penjualan</span>
+                                <i class="right fa fa-angle-left"></i>
+                            </p>
+                        </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
                         <a href="{{ route("admin.akuns.index") }}" class="nav-link {{ request()->is('admin/akuns') || request()->is('admin/akuns/*') ? 'active' : '' }}">
                             <i class="fas fa-users">
 
@@ -82,6 +93,18 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route("admin.penjualanterbanyaks.index") }}" class="nav-link {{ request()->is('admin/penjualanterbanyaks') || request()->is('admin/penjualanterbanyaks/*') ? 'active' : '' }}">
+                            <i class="fas fa-users">
+
+                            </i>
+                            <p>
+                                <span>Penjualan Fakultas</span>
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+                </li>
                 <li class="nav-item">
                         <a href="{{ route("admin.fakultass.index") }}" class="nav-link {{ request()->is('admin/fakultass') || request()->is('admin/fakultass/*') ? 'active' : '' }}">
                             <i class="fas fa-users">

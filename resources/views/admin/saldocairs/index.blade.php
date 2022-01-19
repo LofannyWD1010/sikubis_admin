@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 @section('content')
+<?php 
+$sum_saldo_cair = 0;
+$saldo_cair_total = 0;
+?>
 <div class="card">
     <div class="card-header">
         Saldo Cair
@@ -29,7 +33,7 @@
         </form>
     </div>
     <div class="card-header" style="color: green;">
-        <strong>{{App\Pengguna::showRupiah($total ?? '') }}</strong>
+        <strong>Total Semua {{App\Pengguna::showRupiah($total ?? '') }}</strong>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -89,8 +93,20 @@
                     <td>
                         {{ $saldo_cair->created_at ?? '' }}
                     </td>
+                    <?php $sum_saldo_cair = $sum_saldo_cair + $saldo_cair->saldo?>
+                    <?php $saldo_cair_total = $saldo_cair_total + $sum_saldo_cair ?>
+                    <?php $sum_saldo_cair = 0?>
                     @endforeach
                 </tbody>
+            </table>
+            <table class=" table table-bordered table-striped table-hover datatable">
+              <tbody>
+              <tr>
+                      <td colspan="3">
+                        <label>Total Saat ini {{App\Pengguna::showRupiah($saldo_cair_total) }}</label>
+                      </td>
+                    </tr>
+              </tbody>
             </table>
         </div>
     </div>
