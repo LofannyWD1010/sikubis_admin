@@ -100,7 +100,7 @@
                         {{$total_pendapatan->total_keuntungan}}
                     </td>
                     <td>
-                        {{$total_pendapatan->updated_at}}
+                        {{$total_pendapatan->Pengguna->updated_at}}
                     </td>
                     <td>
                         Detail
