@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 use App\Pengguna;
 use App\Detail_Pesanan;
 use App\Produk;
+use App\Fakultas;
+use App\Jurusan;
+use App\Civitas_Akademika;
 
 class Request_Penjual extends Model
 {
