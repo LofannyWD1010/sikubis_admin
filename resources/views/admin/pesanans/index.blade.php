@@ -2,7 +2,14 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        Pesanan
+    <div class="row">
+            <div class="col-md-6">Pesanan</div>
+            <div class="col-md-6 text-right">
+                <a class="btn btn-primary" href="{{ route('admin.pesananrekaps.index')}}">
+                Pesanan Rekap
+                </a>
+            </div>
+        </div>
     </div>
 
     <div class="card-body">

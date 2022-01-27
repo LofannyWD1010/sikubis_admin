@@ -2,51 +2,9 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        Penjualan Terbanyak Fakultas
+        Pesanan Rekap
     </div>
-    <div>
-        <form action="{{ route('admin.penjualanterbanyaks.show_range') }}" method="POST">
-        @csrf
-            <div class="col-md-3">
-              <div class="form-group">
-              <label for="">Tanggal Awal</label>
-              <input type="date" class="form-control" name="tanggalawal" value="{{$tanggalawal ?? ''}}">
-              </div>
-            </div>
 
-            <div class="col-md-3">
-              <div class="form-group">
-              <label for="">Tanggal Akhir</label>
-              <input type="date" class="form-control" name="tanggalakhir" value="{{$tanggalakhir ?? ''}}">
-              </div>
-            </div>
-
-            <div class="col-md-3">
-            <div class="form-group {{ $errors->has('id_fakultas') ? 'has-error' : '' }}">
-                <label for="id_fakultas">Fakultas</label>
-                <select class="form-control select2 {{ $errors->has('id_fakultas') ? 'is-invalid' : '' }}" name="id_fakultas" id="id_fakultas" required>
-                    <option value {{ old('id_fakultas', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                    @foreach($fakultas_select as $key => $label)
-                        <option value="{{ $key }}" {{ old('id_fakultas', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
-                    @endforeach
-                </select>                   
-                @if($errors->has('id_fakultas'))
-                    <p class="help-block">
-                        {{ $errors->first('id_fakultas') }}
-                    </p>
-                @endif
-            </div>
-            </div>
-            
-
-            <div class="col-md-2" style="margin-top: 24px;">
-               <div class="form-group">
-                 <input type="submit" class="btn btn-primary" value="Submit">
-                </div>
-            </div>
-            
-        </form>
-    </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class=" table table-bordered table-striped table-hover datatable">
@@ -60,30 +18,30 @@
                             &nbsp;
                         </th>
                         <th>
-                            Nama
+                            ID Pesanan
                             &nbsp;
                         </th>
                         <th>
-                            Nama Fakultas
+                            Foto
                             &nbsp;
                         </th>
                         <th>
-                            Total Keuntungan
+                            Upload Bukti
                             &nbsp;
                         </th>
                         <th>
-                            Waktu
+                            Total Pembayaran
                             &nbsp;
                         </th>
                         <th>
-                            Aksi
+                            AKSI
                             &nbsp;
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($total_pendapatan as $total_pendapatan)
-                    <tr data-entry-id="{{ $total_pendapatan->id }}">
+                    @foreach($pesanan as $pesanan)
+                        <tr data-entry-id="{{ $pesanan->id_pesanan }}">
                     <td>
                     
                     </td>
@@ -91,23 +49,24 @@
                         {{$loop->iteration}}
                     </td>
                     <td>
-                        {{$total_pendapatan->Pengguna->nama}}
+                        {{ $pesanan->id_pesanan ?? '' }}
                     </td>
                     <td>
-                        {{$total_pendapatan->Fakultas->nama}}
+                        <img width="100" height="100" src="{{ asset("http://inkubator.sigerdev.com/uploads/file/".$pesanan->foto) }}"/>
                     </td>
                     <td>
-                        {{$total_pendapatan->total_keuntungan}}
+                        <span class="badge badge-success">{{ $pesanan->status ?? '' }}</span>
                     </td>
                     <td>
-                        {{$total_pendapatan->updated_at}}
+                    {{App\Pengguna::showRupiah($pesanan->total_bayar ?? '') }}
                     </td>
                     <td>
+                        <a class="btn btn-xs btn-primary" href="{{ route('admin.pesananrekaps.show', $pesanan->id_pesanan) }}">
                         Detail
-                        
+                        </a>
                     </td>
                     </tr>
-                    @endforeach
+                @endforeach
                 </tbody>
             </table>
         </div>

@@ -72,7 +72,7 @@
                         </ul>
                     </li>
                 @endcan
-                <li class="nav-item has-treeview {{ request()->is('admin/akuns*') ? 'menu-open' : '' }} {{ request()->is('admin/penjualanterbanyaks*') ? 'menu-open' : '' }}">
+                <li class="nav-item has-treeview {{ request()->is('admin/akuns*') ? 'menu-open' : '' }} {{ request()->is('admin/penjualanterbanyaks*') ? 'menu-open' : '' }} {{ request()->is('admin/penjualanrekaps*') ? 'menu-open' : '' }}">
                         <a class="nav-link nav-dropdown-toggle">
                             <i class="fas fa-briefcase">
 
@@ -100,6 +100,16 @@
                             </i>
                             <p>
                                 <span>Penjualan Fakultas</span>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route("admin.penjualanrekaps.index") }}" class="nav-link {{ request()->is('admin/penjualanrekaps') || request()->is('admin/penjualanrekaps/*') ? 'active' : '' }}">
+                            <i class="fas fa-users">
+
+                            </i>
+                            <p>
+                                <span>Penjualan Rekap Fakultas</span>
                             </p>
                         </a>
                     </li>

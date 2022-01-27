@@ -45,6 +45,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     
     Route::resource('pesanans', 'PesananController');
 
+    Route::delete('pesananrekaps/destroy', 'PesananRekapController@massDestroy')->name('pesananrekaps.massDestroy');
+    
+    Route::patch('pesananrekaps/update_detail_pesanan/{id_pesanan}', 'PesananRekapController@update_detail_pesanan')->name('pesananrekaps.update_detail_pesanan');
+    
+    Route::resource('pesananrekaps', 'PesananRekapController');
+
     Route::delete('requests/destroy', 'RequestController@massDestroy')->name('requests.massDestroy');
 
     Route::patch('requests/update_request_penjual/{id_pengguna}', 'RequestController@update_request_penjual')->name('requests.update_request_penjual');
@@ -123,11 +129,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     
     Route::get('laporanjurnals/show_weekly', 'LaporanJurnalController@show_weekly')->name('laporanjurnals.show_weekly');
     
-    Route::delete('penjualanterbanyaks/destroy', 'PenjualTerbanyakController@massDestroy')->name('penjualanterbanyaks.massDestroy');
+    Route::delete('penjualanterbanyaks/destroy', 'PenjualanTerbanyakController@massDestroy')->name('penjualanterbanyaks.massDestroy');
     
     Route::resource('penjualanterbanyaks', 'PenjualanTerbanyakController');
-    
-    Route::get('penjualanterbanyaks/detail/{id}', 'PenjualanTerbanyakController@detail')->name('penjualanterbanyaks.detail');
 
-    Route::post('penjualanterbanyaks/detail/{id}/show_range', 'PenjualanTerbanyakController@show_range')->name('penjualanterbanyaks.show_range');
+    Route::post('penjualanterbanyaks/show_range', 'PenjualanTerbanyakController@show_range')->name('penjualanterbanyaks.show_range');
+
+    Route::delete('penjualanrekaps/destroy', 'PenjualanRekapController@massDestroy')->name('penjualanrekaps.massDestroy');
+    
+    Route::resource('penjualanrekaps', 'PenjualanRekapController');
+
+    Route::post('penjualanrekaps/show_range', 'PenjualanRekapController@show_range')->name('penjualanrekaps.show_range');
 });

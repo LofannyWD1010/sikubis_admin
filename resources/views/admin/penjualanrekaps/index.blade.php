@@ -2,10 +2,10 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        Penjualan Terbanyak Fakultas
+        Penjualan Rekap Fakultas
     </div>
     <div>
-        <form action="{{ route('admin.penjualanterbanyaks.show_range') }}" method="POST">
+        <form action="{{ route('admin.penjualanrekaps.show_range') }}" method="POST">
         @csrf
             <div class="col-md-3">
               <div class="form-group">
@@ -68,7 +68,7 @@
                             &nbsp;
                         </th>
                         <th>
-                            Total Keuntungan
+                            Pendapatan
                             &nbsp;
                         </th>
                         <th>
@@ -82,8 +82,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($total_pendapatan as $total_pendapatan)
-                    <tr data-entry-id="{{ $total_pendapatan->id }}">
+                @foreach($rekap as $rekap)
+                    <tr data-entry-id="{{ $rekap->id }}">
                     <td>
                     
                     </td>
@@ -91,16 +91,16 @@
                         {{$loop->iteration}}
                     </td>
                     <td>
-                        {{$total_pendapatan->Pengguna->nama}}
+                        {{$rekap->Pengguna->nama}}
                     </td>
                     <td>
-                        {{$total_pendapatan->Fakultas->nama}}
+                        {{$rekap->Request_Penjual->Fakultas->nama}}
                     </td>
                     <td>
-                        {{$total_pendapatan->total_keuntungan}}
+                        {{$rekap->total_keuntungan}}
                     </td>
                     <td>
-                        {{$total_pendapatan->updated_at}}
+                        {{$rekap->updated_at}}
                     </td>
                     <td>
                         Detail

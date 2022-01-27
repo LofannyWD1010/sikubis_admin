@@ -12,7 +12,8 @@ class PesananController extends Controller
 {
     public function index()
     {
-        $pesanan = Pesanan::all();//->where('status','lunas');
+        $pesanan = Pesanan::all()
+        ->where('status','belum');
         return view('admin.pesanans.index', compact('pesanan'));
     }
 
@@ -28,6 +29,9 @@ class PesananController extends Controller
 
         Detail_Pesanan::where('id_pesanan',$id_pesanan)->update([
             'status' => 'diproses',
+        ]);
+        Pesanan::where('id_pesanan',$id_pesanan)->update([
+            'status' => 'lunas',
         ]);
         $detail_pesanan = Detail_Pesanan::all()->where('id_pesanan',$id_pesanan);
         // return $detail_pesanan;

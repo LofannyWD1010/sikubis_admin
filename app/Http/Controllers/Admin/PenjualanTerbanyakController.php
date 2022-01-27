@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Detail_Pesanan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
@@ -9,42 +10,55 @@ use Carbon\CarbonPeriod;
 use App\Fakultas;
 use App\Request_Penjual;
 use App\Produk;
+use DB;
 
 class PenjualanTerbanyakController extends Controller
 {
     public function index()
     {
-        $fakultas = Fakultas::all();
-        return view('admin.penjualanterbanyaks.index', compact('fakultas'));
-    }
-    public function detail($id)
-    {
-        $mitra = Request_Penjual::join('detail_pesanan','detail_pesanan.id_penjual','=','request_mitra.id_pengguna')
-        ->select('detail_pesanan.*','request_mitra.id_pengguna','request_mitra.id_fakultas')
-        ->where('request_mitra.id_fakultas',$id)
-        ->where('detail_pesanan.status','diterima')
+        $total_pendapatan = Request_Penjual::addSelect(['total_keuntungan' => Detail_Pesanan::selectRaw('sum(total_keuntungan) as total')
+        ->whereColumn('id_penjual', 'request_mitra.id_pengguna')
+        ->where('status','diterima')
+        ->groupBy('id_penjual')])
+        ->orderBy('total_keuntungan', 'DESC')
         ->get();
-        $fakultas = Fakultas::find($id);
-        
+        $fakultas_select = Fakultas::all()->pluck('nama','id');
 
-        return view('admin.penjualanterbanyaks.detail', compact('mitra','fakultas'));
+        return view('admin.penjualanterbanyaks.index', compact('total_pendapatan','fakultas_select'));
     }
-    public function show_range(Request $request,$id)
+    public function show_range(Request $request)
     {
-
-        $mitra = Request_Penjual::join('detail_pesanan','detail_pesanan.id_penjual','=','request_mitra.id_pengguna')
-        ->select('detail_pesanan.*','request_mitra.id_pengguna','request_mitra.id_fakultas')
-        ->where('request_mitra.id_fakultas',$id)
-        ->where('detail_pesanan.status','diterima')
+        $total_pendapatan = Request_Penjual::addSelect(['total_keuntungan' => Detail_Pesanan::selectRaw('sum(total_keuntungan) as total')
+        ->whereColumn('id_penjual', 'request_mitra.id_pengguna')
+        ->where('status','diterima')
+        ->groupBy('id_penjual')])
+        ->orderBy('total_keuntungan', 'DESC')
         ->get();
-        $fakultas = Fakultas::find($id);
 
         $tanggalawal = Carbon::parse($request->tanggalawal)->format('Y-m-d');
         $tanggalakhir = Carbon::parse($request->tanggalakhir)->format('Y-m-d');
-            
-        $mitra = $mitra->whereBetween('created_at',[$tanggalawal, $tanggalakhir]);
+        $fakultas = $request->id_fakultas;
+        $fakultas_select = Fakultas::all()->pluck('nama','id');
+        
+        $total_pendapatan = $total_pendapatan->whereBetween('updated_at',[$tanggalawal, $tanggalakhir])
+        ->where('id_fakultas',$fakultas);
+        
 
-        return view('admin.penjualanterbanyaks.detail', compact('tanggalawal','tanggalakhir','mitra','fakultas'));        
+        return view('admin.penjualanterbanyaks.index', compact('tanggalawal','tanggalakhir','total_pendapatan','fakultas','fakultas_select'));        
+    }
+
+    public function show_fakultas(Request $request)
+    {
+        $total_pendapatan = Request_Penjual::addSelect(['total_keuntungan' => Detail_Pesanan::selectRaw('sum(total_keuntungan) as total')
+        ->whereColumn('id_penjual', 'request_mitra.id_pengguna')
+        ->where('status','diterima')
+        ->groupBy('id_penjual')])
+        ->orderBy('total_keuntungan', 'DESC')
+        ->get();
+
+        $fakultas_select = Fakultas::all()->pluck('nama','id');
+
+        return view('admin.penjualanterbanyaks.index',compact('fakultas_select','total_pendapatan'));
     }
 
 }

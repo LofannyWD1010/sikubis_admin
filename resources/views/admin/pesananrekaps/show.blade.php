@@ -6,11 +6,7 @@
         <div class="row">
             <div class="col-md-6">Detail Pesanan</div>
             <div class="col-md-6 text-right">
-                <form action="{{ route('admin.pesanans.update_detail_pesanan', $id_pesanan) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
-                    <input type="hidden" name="_method" value="PATCH">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input type="submit" class="btn btn-sm btn-danger" value="Konfirmasi">
-                </form>
+                
             </div>
         </div>
         
