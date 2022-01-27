@@ -21,6 +21,7 @@ class PenjualanTerbanyakController extends Controller
         ->where('status','diterima')
         ->groupBy('id_penjual')])
         ->orderBy('total_keuntungan', 'DESC')
+        ->where('status','sudah')
         ->get();
         $fakultas_select = Fakultas::all()->pluck('nama','id');
 
