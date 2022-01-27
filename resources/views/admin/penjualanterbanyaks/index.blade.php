@@ -94,7 +94,7 @@
                         {{$total_pendapatan->Pengguna->nama}}
                     </td>
                     <td>
-                        {{$total_pendapatan->id_fakultas}}
+                        {{$total_pendapatan->Fakultas->nama}}
                     </td>
                     <td>
                         {{$total_pendapatan->total_keuntungan}}
