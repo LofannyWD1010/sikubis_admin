@@ -34,6 +34,7 @@ class PenjualanTerbanyakController extends Controller
         ->where('status','diterima')
         ->groupBy('id_penjual')])
         ->orderBy('total_keuntungan', 'DESC')
+        ->where('status','sudah')
         ->get();
 
         $tanggalawal = Carbon::parse($request->tanggalawal)->format('Y-m-d');
@@ -47,19 +48,16 @@ class PenjualanTerbanyakController extends Controller
 
         return view('admin.penjualanterbanyaks.index', compact('tanggalawal','tanggalakhir','total_pendapatan','fakultas','fakultas_select'));        
     }
-
-    public function show_fakultas(Request $request)
+    public function show($id_pengguna)
     {
-        $total_pendapatan = Request_Penjual::addSelect(['total_keuntungan' => Detail_Pesanan::selectRaw('sum(total_keuntungan) as total')
-        ->whereColumn('id_penjual', 'request_mitra.id_pengguna')
-        ->where('status','diterima')
-        ->groupBy('id_penjual')])
-        ->orderBy('total_keuntungan', 'DESC')
+
+        $riwayat_penjualan = Request_Penjual::join('detail_pesanan','detail_pesanan.id_penjual','=','request_mitra.id_pengguna')
+        ->select('request_mitra.id_pengguna','request_mitra.id_fakultas','detail_pesanan.total_keuntungan','detail_pesanan.status','detail_pesanan.updated_at')
+        ->where('request_mitra.id_pengguna',$id_pengguna)
+        ->where('detail_pesanan.status','diterima')
         ->get();
-
-        $fakultas_select = Fakultas::all()->pluck('nama','id');
-
-        return view('admin.penjualanterbanyaks.index',compact('fakultas_select','total_pendapatan'));
+        
+        return view('admin.penjualanterbanyaks.show', compact('id_pengguna','riwayat_penjualan'));
     }
 
 }

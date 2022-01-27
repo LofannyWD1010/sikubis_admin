@@ -103,8 +103,9 @@
                         {{$total_pendapatan->Pengguna->updated_at}}
                     </td>
                     <td>
+                        <a class="btn btn-xs btn-primary" href="{{ route('admin.penjualanterbanyaks.show', $total_pendapatan->id_pengguna) }}">
                         Detail
-                        
+                        </a>        
                     </td>
                     </tr>
                     @endforeach

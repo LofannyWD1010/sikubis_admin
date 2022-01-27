@@ -2,51 +2,9 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        Penjualan Rekap Fakultas
+        Riwayat Keuntungan
     </div>
-    <div>
-        <form action="{{ route('admin.penjualanrekaps.show_range') }}" method="POST">
-        @csrf
-            <div class="col-md-3">
-              <div class="form-group">
-              <label for="">Tanggal Awal</label>
-              <input type="date" class="form-control" name="tanggalawal" value="{{$tanggalawal ?? ''}}">
-              </div>
-            </div>
 
-            <div class="col-md-3">
-              <div class="form-group">
-              <label for="">Tanggal Akhir</label>
-              <input type="date" class="form-control" name="tanggalakhir" value="{{$tanggalakhir ?? ''}}">
-              </div>
-            </div>
-
-            <div class="col-md-3">
-            <div class="form-group {{ $errors->has('id_fakultas') ? 'has-error' : '' }}">
-                <label for="id_fakultas">Fakultas</label>
-                <select class="form-control select2 {{ $errors->has('id_fakultas') ? 'is-invalid' : '' }}" name="id_fakultas" id="id_fakultas" required>
-                    <option value {{ old('id_fakultas', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                    @foreach($fakultas_select as $key => $label)
-                        <option value="{{ $key }}" {{ old('id_fakultas', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
-                    @endforeach
-                </select>                   
-                @if($errors->has('id_fakultas'))
-                    <p class="help-block">
-                        {{ $errors->first('id_fakultas') }}
-                    </p>
-                @endif
-            </div>
-            </div>
-            
-
-            <div class="col-md-2" style="margin-top: 24px;">
-               <div class="form-group">
-                 <input type="submit" class="btn btn-primary" value="Submit">
-                </div>
-            </div>
-            
-        </form>
-    </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class=" table table-bordered table-striped table-hover datatable">
@@ -68,7 +26,7 @@
                             &nbsp;
                         </th>
                         <th>
-                            Pendapatan
+                            Total Keuntungan
                             &nbsp;
                         </th>
                         <th>
@@ -78,8 +36,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($rekap as $rekap)
-                    <tr data-entry-id="{{ $rekap->id }}">
+                @foreach($riwayat_penjualan as $riwayat_penjualan)
+                    <tr data-entry-id="{{ $riwayat_penjualan->id }}">
                     <td>
                     
                     </td>
@@ -87,16 +45,16 @@
                         {{$loop->iteration}}
                     </td>
                     <td>
-                        {{$rekap->Pengguna->nama}}
+                        {{$riwayat_penjualan->Pengguna->nama}}
                     </td>
                     <td>
-                        {{$rekap->Request_Penjual->Fakultas->nama}}
+                        {{$riwayat_penjualan->Fakultas->nama}}
                     </td>
                     <td>
-                        {{$rekap->total_keuntungan}}
+                        {{$riwayat_penjualan->total_keuntungan}}
                     </td>
                     <td>
-                        {{$rekap->updated_at}}
+                        {{$riwayat_penjualan->updated_at}}
                     </td>
                     </tr>
                     @endforeach
