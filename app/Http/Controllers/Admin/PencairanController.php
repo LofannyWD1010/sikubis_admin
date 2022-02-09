@@ -19,7 +19,6 @@ class PencairanController extends Controller
 
     public function update_saldo_cair($id)
     {
-        abort_unless(\Gate::allows('product_edit'), 403);
 
         Saldo_Cair::where('id',$id)->update([
             'status' => 'sudah cair',
