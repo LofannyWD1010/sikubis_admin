@@ -65,6 +65,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     
     Route::resource('akuns', 'AkunController');
 
+    Route::post('akuns/show_civitas', 'AkunController@show_civitas')->name('akuns.show_civitas');
+
+    Route::get('/akuns/show_civitas_filter/{id_civitas_akademika}', 'AkunController@show_civitas_filter');
+
     Route::delete('saldomasuks/destroy', 'SaldoMasukController@massDestroy')->name('saldomasuks.massDestroy');
     
     Route::resource('saldomasuks', 'SaldoMasukController');
@@ -140,4 +144,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('penjualanrekaps', 'PenjualanRekapController');
 
     Route::post('penjualanrekaps/show_range', 'PenjualanRekapController@show_range')->name('penjualanrekaps.show_range');
+
+    Route::delete('produks/destroy', 'ProdukController@massDestroy')->name('produks.massDestroy');
+    
+    Route::resource('produks', 'ProdukController');
 });

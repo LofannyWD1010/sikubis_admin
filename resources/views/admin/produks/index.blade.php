@@ -1,44 +1,12 @@
 @extends('layouts.admin')
 @section('content')
-<?php 
-$sum_saldo_cair = 0;
-$saldo_cair_total = 0;
-?>
 <div class="card">
     <div class="card-header">
-        Saldo Cair
-    </div>
-    <div>
-        <form action="{{ route('admin.saldocairs.show_range') }}" method="POST">
-        @csrf
-        <div class="card-header">
-            <div class="box-body no-padding">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="form-group">
-                        <label for="">Start Date</label>
-                        <input type="date" class="form-control" name="tanggalawal" value="{{$tanggalawal ?? ''}}">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                        <label for="">End Date</label>
-                        <input type="date" class="form-control" name="tanggalakhir" value="{{$tanggalakhir ?? ''}}">
-                        </div>
-                    </div>
-                    <div class="col-md-2" style="margin-top: 35px;">
-                        <div class="form-group">
-                        <input type="submit" class="btn btn-sm btn-primary" value="Cari">
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="row">
+            <div class="col-md-6">Produk</div>
         </div>
-        </form>
     </div>
-    <div class="card-header" style="color: green;">
-        <strong>Total Semua {{App\Pengguna::showRupiah($total ?? '') }}</strong>
-    </div>
+
     <div class="card-body">
         <div class="table-responsive">
             <table class=" table table-bordered table-striped table-hover datatable">
@@ -56,26 +24,38 @@ $saldo_cair_total = 0;
                             &nbsp;
                         </th>
                         <th>
-                            Jenis
+                            Foto
                             &nbsp;
                         </th>
                         <th>
-                            Keterangan
+                            Foto 2
                             &nbsp;
                         </th>
                         <th>
-                            Pengeluaran
+                            Foto 3
                             &nbsp;
                         </th>
                         <th>
-                            Waktu
+                            Nama Penjual
+                            &nbsp;
+                        </th>
+                        <th>
+                            Harga
+                            &nbsp;
+                        </th>
+                        <th>
+                            Stok
+                            &nbsp;
+                        </th>
+                        <th>
+                            AKSI
                             &nbsp;
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                @foreach ($saldo_cair as $saldo_cair)
-                        <tr data-entry-id="{{ $saldo_cair->id }}">
+                    @foreach($produk as $produk)
+                        <tr data-entry-id="{{ $produk->id }}">
                     <td>
                     
                     </td>
@@ -83,34 +63,35 @@ $saldo_cair_total = 0;
                         {{$loop->iteration}}
                     </td>
                     <td>
-                        {{ $saldo_cair->Pengguna->nama ?? '' }}
+                        {{ $produk->nama ?? '' }}
                     </td>
                     <td>
-                        Saldo Cair
+                        <img width="100" height="100" src="{{ asset("http://inkubator.sigerdev.com/uploads/file/".$produk->foto) }}"/>
+                    </td><td>
+                        <img width="100" height="100" src="{{ asset("http://inkubator.sigerdev.com/uploads/file/".$produk->foto2) }}"/>
                     </td>
                     <td>
-                        {{ $saldo_cair->status ?? '' }}
+                        <img width="100" height="100" src="{{ asset("http://inkubator.sigerdev.com/uploads/file/".$produk->foto3) }}"/>
                     </td>
                     <td>
-                        {{App\Pengguna::showRupiah($saldo_cair->saldo ?? '') }}
+                        {{$produk->Pengguna->nama}}
                     </td>
                     <td>
-                        {{ $saldo_cair->created_at ?? '' }}
+                    {{App\Pengguna::showRupiah($produk->harga ?? '') }}
                     </td>
-                    <?php $sum_saldo_cair = $sum_saldo_cair + $saldo_cair->saldo?>
-                    <?php $saldo_cair_total = $saldo_cair_total + $sum_saldo_cair ?>
-                    <?php $sum_saldo_cair = 0?>
-                    @endforeach
-                </tbody>
-            </table>
-            <table class=" table table-bordered table-striped table-hover datatable">
-              <tbody>
-              <tr>
-                      <td colspan="3">
-                        <label>Total Saat ini {{App\Pengguna::showRupiah($saldo_cair_total) }}</label>
-                      </td>
+                    <td>
+                        {{$produk->stok}}
+                    </td>
+                    <td>
+                    <form action="{{ route('admin.produks.destroy', $produk->id) }}" method="POST" onsubmit="return confirm('Anda yakin?');" style="display: inline-block;">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="submit" class="btn btn-xs btn-danger" value="Hapus">
+                                    </form>
+                    </td>
                     </tr>
-              </tbody>
+                @endforeach
+                </tbody>
             </table>
         </div>
     </div>

@@ -345,7 +345,7 @@ class HomeController
 
         $label = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
 
-        return view('home', compact('jumlah_mahasiswa','jumlah_dosen','jumlah_penjualan_terbanyak','jumlah_tenagaPendidikan','jumlah_requestBelum','jumlah_requestPencairan'))
+        return view('home', compact('jumlah_mahasiswa','jumlah_dosen','jumlah_penjualan_terbanyak','jumlah_tenagaPendidikan','jumlah_requestBelum','jumlah_requestPencairan','filter_mahasiswa'))
         ->with('pemasukan',json_encode($pemasukan,JSON_NUMERIC_CHECK))
         ->with('pengeluaran',json_encode($pengeluaran,JSON_NUMERIC_CHECK))
         ->with('label',json_encode($label,JSON_NUMERIC_CHECK));

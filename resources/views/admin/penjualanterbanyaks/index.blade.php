@@ -7,45 +7,46 @@
     <div>
         <form action="{{ route('admin.penjualanterbanyaks.show_range') }}" method="POST">
         @csrf
-            <div class="col-md-3">
-              <div class="form-group">
-              <label for="">Tanggal Awal</label>
-              <input type="date" class="form-control" name="tanggalawal" value="{{$tanggalawal ?? ''}}">
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <div class="form-group">
-              <label for="">Tanggal Akhir</label>
-              <input type="date" class="form-control" name="tanggalakhir" value="{{$tanggalakhir ?? ''}}">
-              </div>
-            </div>
-
-            <div class="col-md-3">
-            <div class="form-group {{ $errors->has('id_fakultas') ? 'has-error' : '' }}">
-                <label for="id_fakultas">Fakultas</label>
-                <select class="form-control select2 {{ $errors->has('id_fakultas') ? 'is-invalid' : '' }}" name="id_fakultas" id="id_fakultas" required>
+        <div class="card-header">
+            <div class="box-body no-padding">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                        <label for="">Tanggal Awal</label>
+                        <input type="date" class="form-control" name="tanggalawal" value="{{$tanggalawal ?? ''}}">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                        <label for="">Tanggal Akhir</label>
+                        <input type="date" class="form-control" name="tanggalakhir" value="{{$tanggalakhir ?? ''}}">
+                        </div>
+                    </div>
+                <div class="col-md-3">
+                    <div class="form-group {{ $errors->has('id_fakultas') ? 'has-error' : '' }}">
+                    <label for="id_fakultas">Fakultas</label>
+                    <select class="form-control select2 {{ $errors->has('id_fakultas') ? 'is-invalid' : '' }}" name="id_fakultas" id="id_fakultas" required>
                     <option value {{ old('id_fakultas', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
                     @foreach($fakultas_select as $key => $label)
                         <option value="{{ $key }}" {{ old('id_fakultas', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
                     @endforeach
-                </select>                   
+                    </select>                   
                 @if($errors->has('id_fakultas'))
                     <p class="help-block">
                         {{ $errors->first('id_fakultas') }}
                     </p>
                 @endif
-            </div>
-            </div>
-            
-
-            <div class="col-md-2" style="margin-top: 24px;">
-               <div class="form-group">
-                 <input type="submit" class="btn btn-primary" value="Submit">
+                </div>
+                </div>
+                    <div class="col-md-2" style="margin-top: 34px;">
+                        <div class="form-group">
+                        <input type="submit" class="btn btn-sm btn-primary" value="Cari">
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-        </form>
+        </div>     
+</form>
     </div>
     <div class="card-body">
         <div class="table-responsive">

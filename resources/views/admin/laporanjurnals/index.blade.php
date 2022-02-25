@@ -11,25 +11,29 @@ $sum_saldo = 0;
     <div>
         <form action="{{ route('admin.laporanjurnals.show_range') }}" method="POST">
         @csrf
-            <div class="col-md-3">
-              <div class="form-group">
-              <label for="">Start Date</label>
-              <input type="date" class="form-control" name="tanggalawal" value="{{$tanggalawal ?? ''}}">
-            </div>
-            </div>
-
-            <div class="col-md-3">
-              <div class="form-group">
-              <label for="">End Date</label>
-              <input type="date" class="form-control" name="tanggalakhir" value="{{$tanggalakhir ?? ''}}">
-            </div>
-            </div>
-
-            <div class="col-md-2" style="margin-top: 24px;">
-               <div class="form-group">
-                 <input type="submit" class="btn btn-primary" value="Submit">
+        <div class="card-header">
+            <div class="box-body no-padding">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                        <label for="">Start Date</label>
+                        <input type="date" class="form-control" name="tanggalawal" value="{{$tanggalawal ?? ''}}">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                        <label for="">End Date</label>
+                        <input type="date" class="form-control" name="tanggalakhir" value="{{$tanggalakhir ?? ''}}">
+                        </div>
+                    </div>
+                    <div class="col-md-2" style="margin-top: 35px;">
+                        <div class="form-group">
+                        <input type="submit" class="btn btn-sm btn-primary" value="Cari">
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
         </form>
     </div>
 
