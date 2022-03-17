@@ -4,14 +4,14 @@
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route("admin.permissions.create") }}">
-                {{ trans('global.add') }} {{ trans('global.permission.title_singular') }}
+                Tambah Permission
             </a>
         </div>
     </div>
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('global.permission.title_singular') }} {{ trans('global.list') }}
+        Daftar Permission
     </div>
 
     <div class="card-body">
@@ -40,11 +40,6 @@
                                 {{ $permission->title ?? '' }}
                             </td>
                             <td>
-                                @can('permission_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.permissions.show', $permission->id) }}">
-                                        {{ trans('global.view') }}
-                                    </a>
-                                @endcan
                                 @can('permission_edit')
                                     <a class="btn btn-xs btn-info" href="{{ route('admin.permissions.edit', $permission->id) }}">
                                         {{ trans('global.edit') }}
@@ -54,7 +49,7 @@
                                     <form action="{{ route('admin.permissions.destroy', $permission->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                        <input type="submit" class="btn btn-xs btn-danger" value="Hapus">
                                     </form>
                                 @endcan
                             </td>

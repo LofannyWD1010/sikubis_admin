@@ -16,13 +16,13 @@ $saldo_cair_total = 0;
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
-                        <label for="">Start Date</label>
+                        <label for="">Tanggal Awal</label>
                         <input type="date" class="form-control" name="tanggalawal" value="{{$tanggalawal ?? ''}}">
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                        <label for="">End Date</label>
+                        <label for="">Tanggal Akhir</label>
                         <input type="date" class="form-control" name="tanggalakhir" value="{{$tanggalakhir ?? ''}}">
                         </div>
                     </div>

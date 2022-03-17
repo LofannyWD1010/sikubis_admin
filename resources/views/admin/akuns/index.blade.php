@@ -13,7 +13,7 @@
                 <div class="form-group {{ $errors->has('id_civitas_akademika') ? 'has-error' : '' }}">
                 <label for="id_civitas_akademika">Civitas Akademika</label>
                 <select class="form-control select2 {{ $errors->has('id_civitas_akademika') ? 'is-invalid' : '' }}" name="id_civitas_akademika" id="id_civitas_akademika" required>
-                    <option value {{ old('id_civitas_akademika', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    <option value {{ old('id_civitas_akademika', null) === null ? 'selected' : '' }}>Pilih Civitas Akademika</option>
                     @foreach($civitas_select as $key => $label)
                         <option value="{{ $key }}" {{ old('id_civitas_akademika', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
                     @endforeach

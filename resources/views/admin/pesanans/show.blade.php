@@ -100,18 +100,10 @@
                 </tr>
                 <tr>
                     <th>
-                        Status Pembayaran
+                        Status
                     </th>
                     <td>
                     <input type="submit" class="btn btn-sm btn-info" value="{{$detail_pesanan->status}}">
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        Status Pesanan
-                    </th>
-                    <td>
-                        {{$detail_pesanan->ambil}}
                     </td>
                 </tr>
                 @endforeach

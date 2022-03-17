@@ -26,7 +26,7 @@
                     <div class="form-group {{ $errors->has('id_fakultas') ? 'has-error' : '' }}">
                     <label for="id_fakultas">Fakultas</label>
                     <select class="form-control select2 {{ $errors->has('id_fakultas') ? 'is-invalid' : '' }}" name="id_fakultas" id="id_fakultas" required>
-                    <option value {{ old('id_fakultas', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    <option value {{ old('id_fakultas', null) === null ? 'selected' : '' }}>Pilih Fakultas</option>
                     @foreach($fakultas_select as $key => $label)
                         <option value="{{ $key }}" {{ old('id_fakultas', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
                     @endforeach
