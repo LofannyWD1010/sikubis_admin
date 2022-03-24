@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 @section('content')
+<?php 
+$sum_saldo_penjualan = 0;
+$saldo_penjualan_total = 0;
+?>
 <div class="card">
     <div class="card-header">
         Penjualan Rekap Fakultas
@@ -102,7 +106,17 @@
                         {{$rekap->updated_at}}
                     </td>
                     </tr>
+                    <?php $sum_saldo_penjualan = $sum_saldo_penjualan + $rekap->total_keuntungan?>
+                    <?php $saldo_penjualan_total = $saldo_penjualan_total + $sum_saldo_penjualan ?>
+                    <?php $sum_saldo_penjualan = 0?>
                     @endforeach
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">
+                                <label>Total Saat ini {{App\Pengguna::showRupiah($saldo_penjualan_total) }}</label>
+                            </td>
+                        </tr>
+                    </tfoot>
                 </tbody>
             </table>
         </div>

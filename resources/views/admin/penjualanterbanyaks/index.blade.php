@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 @section('content')
+<?php 
+$sum_saldo_penjualan = 0;
+$saldo_penjualan_total = 0;
+?>
 <div class="card">
     <div class="card-header">
         Penjualan Terbanyak Fakultas
@@ -101,7 +105,7 @@
                         {{$total_pendapatan->total_keuntungan}}
                     </td>
                     <td>
-                        {{$total_pendapatan->Pengguna->updated_at}}
+                        {{$total_pendapatan->Pengguna->created_at}}
                     </td>
                     <td>
                         <a class="btn btn-xs btn-primary" href="{{ route('admin.penjualanterbanyaks.show', $total_pendapatan->id_pengguna) }}">
@@ -109,7 +113,17 @@
                         </a>        
                     </td>
                     </tr>
+                    <?php $sum_saldo_penjualan = $sum_saldo_penjualan + $total_pendapatan->total_keuntungan?>
+                    <?php $saldo_penjualan_total = $saldo_penjualan_total + $sum_saldo_penjualan ?>
+                    <?php $sum_saldo_penjualan = 0?>
                     @endforeach
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">
+                                <label>Total Saat ini {{App\Pengguna::showRupiah($saldo_penjualan_total) }}</label>
+                            </td>
+                        </tr>
+                    </tfoot>
                 </tbody>
             </table>
         </div>

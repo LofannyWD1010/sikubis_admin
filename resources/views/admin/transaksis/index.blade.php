@@ -4,7 +4,7 @@
     <div class="card-header">
         Saldo Penjual
     </div>
-    <div class="card-header" style="color: green;">
+    <div class="card-header">
         <strong>{{App\Pengguna::showRupiah($total ?? '') }}</strong>
     </div>
 

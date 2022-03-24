@@ -61,10 +61,7 @@
         </div>
 
         <footer class="main-footer">
-            <div class="float-right d-none d-sm-block">
-                <b>Version</b> 3.0.0-alpha
-            </div>
-            <strong> &copy;</strong> {{ trans('global.allRightsReserved') }}
+            <center><strong> &copy;</strong> 2022 <b>Sikubis</b> All Right Reserved</center>
         </footer>
         <form id="logoutform" action="{{ route('logout') }}" method="POST" style="display: none;">
             {{ csrf_field() }}

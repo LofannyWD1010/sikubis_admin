@@ -36,7 +36,7 @@ $saldo_masuk_total = 0;
         </div>
         </form>
     </div>
-    <div class="card-header" style="color: green;">
+    <div class="card-header">
         <strong>{{App\Pengguna::showRupiah($total ?? '') }}</strong>
     </div>
     <div class="card-body">
@@ -101,16 +101,15 @@ $saldo_masuk_total = 0;
                     <?php $saldo_masuk_total = $saldo_masuk_total + $sum_saldo_masuk ?>
                     <?php $sum_saldo_masuk = 0?>
                     @endforeach
-                </tbody>
-            </table>
-            <table class=" table table-bordered table-striped table-hover datatable">
-              <tbody>
-              <tr>
+                    <tfoot >
+                    <tr>
                       <td colspan="3">
                         <label>Total Saat ini {{App\Pengguna::showRupiah($saldo_masuk_total) }}</label>
                       </td>
                     </tr>
-              </tbody>
+                    </tfoot>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

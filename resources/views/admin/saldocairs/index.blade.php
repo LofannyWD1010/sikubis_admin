@@ -36,7 +36,7 @@ $saldo_cair_total = 0;
         </div>
         </form>
     </div>
-    <div class="card-header" style="color: green;">
+    <div class="card-header">
         <strong>Total Semua {{App\Pengguna::showRupiah($total ?? '') }}</strong>
     </div>
     <div class="card-body">
@@ -101,16 +101,14 @@ $saldo_cair_total = 0;
                     <?php $saldo_cair_total = $saldo_cair_total + $sum_saldo_cair ?>
                     <?php $sum_saldo_cair = 0?>
                     @endforeach
-                </tbody>
-            </table>
-            <table class=" table table-bordered table-striped table-hover datatable">
-              <tbody>
-              <tr>
+                    <tfoot>
+                    <tr>
                       <td colspan="3">
                         <label>Total Saat ini {{App\Pengguna::showRupiah($saldo_cair_total) }}</label>
                       </td>
                     </tr>
-              </tbody>
+                    </tfoot>
+                </tbody>
             </table>
         </div>
     </div>

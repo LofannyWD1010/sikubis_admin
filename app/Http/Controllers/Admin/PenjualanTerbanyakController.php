@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use App\Fakultas;
 use App\Request_Penjual;
+use App\Pengguna;
 use App\Produk;
 use DB;
 
@@ -42,7 +43,7 @@ class PenjualanTerbanyakController extends Controller
         $fakultas = $request->id_fakultas;
         $fakultas_select = Fakultas::all()->pluck('nama','id');
         
-        $total_pendapatan = $total_pendapatan->whereBetween('updated_at',[$tanggalawal, $tanggalakhir])
+        $total_pendapatan = $total_pendapatan->whereBetween('pengguna.created_at',[$tanggalawal, $tanggalakhir])
         ->where('id_fakultas',$fakultas);
         
 

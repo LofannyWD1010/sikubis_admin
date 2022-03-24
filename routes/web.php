@@ -85,6 +85,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     
     Route::resource('keuntungans', 'KeuntunganController');
 
+    Route::post('keuntungans/show_range', 'KeuntunganController@show_range')->name('keuntungans.show_range');
+
     Route::delete('laporansikubiss/destroy', 'LaporanSikubisController@massDestroy')->name('laporansikubiss.massDestroy');
     
     Route::get('laporansikubiss/show_range', 'LaporanSikubisController@show_range')->name('laporansikubiss.show_range');

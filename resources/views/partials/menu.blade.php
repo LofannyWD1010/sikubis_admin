@@ -28,7 +28,7 @@
 
                             </i>
                             <p>
-                                <span>{{ trans('global.userManagement.title') }}</span>
+                                <span>Manajemen Admin</span>
                                 <i class="right fa fa-angle-left"></i>
                             </p>
                         </a>
@@ -234,7 +234,7 @@
                             <i class="fas fa-sign-out-alt">
 
                             </i>
-                            <span>{{ trans('global.logout') }}</span>
+                            <span>Keluar</span>
                         </p>
                     </a>
                 </li>

@@ -7,10 +7,13 @@
                 Sikubis Admin
             </a>
         </div>
+        <div>
+            <img width="150" height="150" src="http://inkubator.sigerdev.com/uploads/file/logo_fix.png"/>
+        </div>
     </div>
     <div class="card">
         <div class="card-body login-card-body">
-            <p class="login-box-msg">Sign in to start your session</p>
+            <p class="login-box-msg">Masuk untuk mengakses Sikubis Admin</p>
             @if(\Session::has('message'))
                 <p class="alert alert-info">
                     {{ \Session::get('message') }}
@@ -41,7 +44,7 @@
                 <div class="row">
                     <!-- /.col -->
                     <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">{{ trans('global.login') }}</button>
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">Masuk</button>
                     </div>
                     <!-- /.col -->
                 </div>

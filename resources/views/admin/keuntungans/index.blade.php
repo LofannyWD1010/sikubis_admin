@@ -1,11 +1,45 @@
 @extends('layouts.admin')
 @section('content')
+<?php 
+$sum_saldo_keuntungan = 0;
+$saldo_keuntungan_total = 0;
+?>
 <div class="card">
     <div class="card-header">
         Saldo Keuntungan Sikubis
     </div>
-    <div class="card-header" style="color: green;">
-    <strong>Rp. {{ $total*5/100 ?? '' }}</strong>
+    
+    <div>
+        <form action="{{ route('admin.keuntungans.show_range') }}" method="POST">
+        @csrf
+        <div class="card-header">
+            <div class="box-body no-padding">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                        <label for="">Tanggal Awal</label>
+                        <input type="date" class="form-control" name="tanggalawal" value="{{$tanggalawal ?? ''}}">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                        <label for="">Tanggal Akhir</label>
+                        <input type="date" class="form-control" name="tanggalakhir" value="{{$tanggalakhir ?? ''}}">
+                        </div>
+                    </div>
+                    <div class="col-md-2" style="margin-top: 35px;">
+                        <div class="form-group">
+                        <input type="submit" class="btn btn-sm btn-primary" value="Cari">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+
+    <div class="card-header">
+    <strong>Total Semua {{App\Pengguna::showRupiah($total*5/100 ?? '') }}</strong>
     </div>
 
     <div class="card-body">
@@ -54,13 +88,23 @@
                         {{ $keuntungan->jumlah ?? '' }}
                     </td>
                     <td>
-                        {{ $keuntungan->total_keuntungan*5/100 ?? '' }}
+                        {{App\Pengguna::showRupiah($keuntungan->total_keuntungan*5/100 ?? '') }}
 
                     </td>
                     <td>
                         {{ $keuntungan->created_at ?? '' }}
                     </td>
+                    <?php $sum_saldo_keuntungan = $sum_saldo_keuntungan + $keuntungan->total_keuntungan*5/100?>
+                    <?php $saldo_keuntungan_total = $saldo_keuntungan_total + $sum_saldo_keuntungan ?>
+                    <?php $sum_saldo_keuntungan = 0?>
                     @endforeach
+                    <tfoot>
+                        <tr>
+                            <td>
+                                <label>Total Saat ini {{App\Pengguna::showRupiah($saldo_keuntungan_total) }}</label>
+                            </td>
+                        </tr>
+                    </tfoot>
                 </tbody>
             </table>
         </div>
