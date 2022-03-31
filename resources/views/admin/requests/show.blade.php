@@ -60,7 +60,11 @@
                         Status
                     </th>
                     <td>
-                        {{$request_mitra->status}}
+                        @if($request_mitra->status != "1")
+                        Belum
+                        @else
+                        Sudah
+                        @endif
                     </td>
                 </tr>
                 <tr>
