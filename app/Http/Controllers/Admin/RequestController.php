@@ -11,7 +11,7 @@ class RequestController extends Controller
 {
     public function index()
     {
-        $request_mitra = Request_Penjual::all()->where('status','belum');
+        $request_mitra = Request_Penjual::all()->where('status','0');
         return view('admin.requests.index', compact('request_mitra'));
     }
 
@@ -27,7 +27,7 @@ class RequestController extends Controller
         //abort_unless(\Gate::allows('product_edit'), 403);
 
         Request_Penjual::where('id_pengguna',$id_pengguna)->update([
-            'status' => 'sudah',
+            'status' => '1',
 
         ]);
         Pengguna::where('id',$id_pengguna)->update([
