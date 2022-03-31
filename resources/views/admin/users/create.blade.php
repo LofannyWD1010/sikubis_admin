@@ -35,7 +35,7 @@
             </div>
             <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
                 <label for="password">{{ trans('global.user.fields.password') }}</label>
-                <input type="password" id="password" name="password" class="form-control">
+                <input type="password" id="password" name="password" class="form-control" minlength="4" maxlength="8">
                 @if($errors->has('password'))
                     <p class="help-block">
                         {{ $errors->first('password') }}
