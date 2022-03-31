@@ -13,7 +13,8 @@ class PesananController extends Controller
     public function index()
     {
         $pesanan = Pesanan::all()
-        ->where('status','belum');
+        ->where('status','belum')
+        ->where('foto','!=', null);
         return view('admin.pesanans.index', compact('pesanan'));
     }
 
