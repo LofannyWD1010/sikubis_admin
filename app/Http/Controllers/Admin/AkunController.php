@@ -14,7 +14,7 @@ class AkunController extends Controller
 {
     public function index()
     {
-        $pengguna = Request_Penjual::all()->where('status','sudah');
+        $pengguna = Request_Penjual::all()->where('status','1');
         $civitas_select = Civitas_Akademika::all()->pluck('nama','id'); 
         return view('admin.akuns.index', compact('pengguna','civitas_select'));
         
@@ -27,7 +27,7 @@ class AkunController extends Controller
     }
     public function show_civitas(Request $request)
     {
-        $pengguna = Request_Penjual::all()->where('status','sudah');
+        $pengguna = Request_Penjual::all()->where('status','1');
 
         $civitas = $request->id_civitas_akademika;
         $civitas_select = Civitas_Akademika::all()->pluck('nama','id');
@@ -40,7 +40,7 @@ class AkunController extends Controller
     public function show_civitas_filter($id_civitas_akademika)
     {
         $pengguna = Request_Penjual::all()
-        ->where('status','sudah')
+        ->where('status','1')
         ->where('id_civitas_akademika',$id_civitas_akademika);
         
         return view('admin.akuns.show_civitas_filter', compact('pengguna'));        

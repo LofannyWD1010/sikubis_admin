@@ -22,7 +22,7 @@ class PenjualanTerbanyakController extends Controller
         ->where('status','diterima')
         ->groupBy('id_penjual')])
         ->orderBy('total_keuntungan', 'DESC')
-        ->where('status','sudah')
+        ->where('status','1')
         ->get();
         $fakultas_select = Fakultas::all()->pluck('nama','id');
 
@@ -35,7 +35,7 @@ class PenjualanTerbanyakController extends Controller
         ->where('status','diterima')
         ->groupBy('id_penjual')])
         ->orderBy('total_keuntungan', 'DESC')
-        ->where('status','sudah')
+        ->where('status','1')
         ->get();
 
         $tanggalawal = Carbon::parse($request->tanggalawal)->format('Y-m-d');
