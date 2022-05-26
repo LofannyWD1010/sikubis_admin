@@ -25,18 +25,18 @@ class HomeController
 
         $jumlah_mahasiswa = Request_Penjual::all()
         ->where('id_civitas_akademika','2')
-		->where('status','sudah')
+		->where('status','1')
         ->count();
         $jumlah_dosen = Request_Penjual::all()
         ->where('id_civitas_akademika','1')
-		->where('status','sudah')
+		->where('status','1')
         ->count();
         $jumlah_tenagaPendidikan = Request_Penjual::all()
         ->where('id_civitas_akademika','3')
-		->where('status','sudah')
+		->where('status','1')
         ->count();
 		$jumlah_requestBelum = Request_Penjual::all()
-        ->where('status','belum')
+        ->where('status','0')
         ->count();
 
 		$jumlah_requestPencairan = Saldo_Cair::all()
