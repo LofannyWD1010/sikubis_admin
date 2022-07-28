@@ -135,7 +135,18 @@
                             </p>
                         </a>
                     </li>
-                <li class="nav-item">
+                <li class="nav-item has-treeview {{ request()->is('admin/pesanans*') ? 'menu-open' : '' }} {{ request()->is('admin/pesananprosess*') ? 'menu-open' : '' }} {{ request()->is('admin/pesanankirims*') ? 'menu-open' : '' }} {{ request()->is('admin/pesananterimas*') ? 'menu-open' : '' }} {{ request()->is('admin/pesananbatals*') ? 'menu-open' : '' }} {{ request()->is('admin/pesananambils*') ? 'menu-open' : '' }}">
+                        <a class="nav-link nav-dropdown-toggle">
+                            <i class="fas fa-briefcase">
+
+                            </i>
+                            <p>
+                                <span>Daftar Pesanan</span>
+                                <i class="right fa fa-angle-left"></i>
+                            </p>
+                        </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
                         <a href="{{ route("admin.pesanans.index") }}" class="nav-link {{ request()->is('admin/pesanans') || request()->is('admin/pesanans/*') ? 'active' : '' }}">
                             <i class="fas fa-envelope-open">
 
@@ -145,6 +156,58 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route("admin.pesananprosess.index") }}" class="nav-link {{ request()->is('admin/pesananprosess') || request()->is('admin/pesananprosess/*') ? 'active' : '' }}">
+                            <i class="fas fa-envelope-open">
+
+                            </i>
+                            <p>
+                                <span>Pesanan Proses</span>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route("admin.pesanankirims.index") }}" class="nav-link {{ request()->is('admin/pesanankirims') || request()->is('admin/pesanankirims/*') ? 'active' : '' }}">
+                            <i class="fas fa-envelope-open">
+
+                            </i>
+                            <p>
+                                <span>Pesanan Kirim</span>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route("admin.pesananterimas.index") }}" class="nav-link {{ request()->is('admin/pesananterimas') || request()->is('admin/pesananterimas/*') ? 'active' : '' }}">
+                            <i class="fas fa-envelope-open">
+
+                            </i>
+                            <p>
+                                <span>Pesanan Terima</span>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route("admin.pesananbatals.index") }}" class="nav-link {{ request()->is('admin/pesananbatals') || request()->is('admin/pesananbatals/*') ? 'active' : '' }}">
+                            <i class="fas fa-envelope-open">
+
+                            </i>
+                            <p>
+                                <span>Pesanan Batal</span>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route("admin.pesananambils.index") }}" class="nav-link {{ request()->is('admin/pesananambils') || request()->is('admin/pesananambils/*') ? 'active' : '' }}">
+                            <i class="fas fa-envelope-open">
+
+                            </i>
+                            <p>
+                                <span>Pesanan Ambil</span>
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+                </li>
                 <li class="nav-item">
                         <a href="{{ route("admin.pencairans.index") }}" class="nav-link {{ request()->is('admin/pencairans') || request()->is('admin/pencairans/*') ? 'active' : '' }}">
                             <i class="fas fa-coins">

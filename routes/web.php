@@ -150,4 +150,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('produks/destroy', 'ProdukController@massDestroy')->name('produks.massDestroy');
     
     Route::resource('produks', 'ProdukController');
+
+    Route::delete('pesananprosess/destroy', 'PesananProsesController@massDestroy')->name('pesananprosess.massDestroy');
+    
+    Route::resource('pesananprosess', 'PesananProsesController');
+
+    Route::delete('pesanankirims/destroy', 'PesananKirimController@massDestroy')->name('pesanankirims.massDestroy');
+    
+    Route::resource('pesanankirims', 'PesananKirimController');
+    
+    Route::resource('pesananbatals', 'PesananBatalController');
+
+    Route::resource('pesananambils', 'PesananAmbilController');
+
+    Route::resource('pesananterimas', 'PesananTerimaController');
+
+    
 });

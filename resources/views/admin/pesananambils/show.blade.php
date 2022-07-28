@@ -1,0 +1,113 @@
+@extends('layouts.admin')
+@section('content')
+
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-6">Detail Pesanan</div>
+            <div class="col-md-6 text-right">
+                
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <tbody>
+                @foreach ($detail_pesanan as $detail_pesanan)
+                <tr>
+                    <th colspan="2" class="text-center bg-success">
+                       Pesanan ke-{{$loop->iteration}}
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        ID Detail Pesanan
+                    </th>
+                    <td>
+                        {{$detail_pesanan->id_detail}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        ID Pesanan
+                    </th>
+                    <td>
+                        {{$detail_pesanan->id_pesanan}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Nama Penjual
+                    </th>
+                    <td>
+                        {{$detail_pesanan->Pengguna->nama}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>
+                        Nama Produk
+                    </th>
+                    <td>
+                        {{$detail_pesanan->Produk->nama}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Harga
+                    </th>
+                    <td>
+                        {{$detail_pesanan->harga}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Ongkos Kirim
+                    </th>
+                    <td>
+                        {{$detail_pesanan->ongkir}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Total Pembayaran
+                    </th>
+                    <td>
+                        {{$detail_pesanan->total_keuntungan}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Jumlah Produk
+                    </th>
+                    <td>
+                        {{$detail_pesanan->jumlah}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Alamat
+                    </th>
+                    <td>
+                        {{$detail_pesanan->alamat_antar}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Status
+                    </th>
+                    <td>
+                    <input type="submit" class="btn btn-sm btn-info" value="{{$detail_pesanan->status}}">
+                    </td>
+                </tr>
+                <tr>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@endsection
